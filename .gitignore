@@ -9,3 +9,5 @@ node_modules
 
 # Not including stuff from composer
 vendor
+
+.DS_Store
