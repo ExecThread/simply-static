@@ -232,8 +232,8 @@ class Archive_Creator {
 	 * @return boolean|WP_Error
 	 */
 	public function publish_to_s3( $bucket, $aws_access_key_id, $aws_secret_access_key ) {
-		$directory_iterator = new RecursiveDirectoryIterator( $this->archive_dir, RecursiveDirectoryIterator::SKIP_DOTS );
-		$recursive_iterator = new RecursiveIteratorIterator( $directory_iterator, RecursiveIteratorIterator::SELF_FIRST );
+		$directory_iterator = new \RecursiveDirectoryIterator( $this->archive_dir, \RecursiveDirectoryIterator::SKIP_DOTS );
+		$recursive_iterator = new \RecursiveIteratorIterator( $directory_iterator, \RecursiveIteratorIterator::SELF_FIRST );
     S3::$useExceptions = true;
 
     $s3 = new S3( $aws_access_key_id, $aws_secret_access_key, false, 's3.amazonaws.com' );
