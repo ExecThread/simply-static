@@ -389,7 +389,7 @@ class Archive_Manager {
       if ( is_wp_error( $result ) ) {
         return $result;
       } else {
-        $message = __( 'Site published to S3 bucket: ' . $bucket, Plugin::SLUG );
+        $message = __( 'Site published to S3 bucket: ' . $bucket, 'simply-static' );
         $this->save_status_message( $message );
         return true;
       }
