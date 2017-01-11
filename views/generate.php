@@ -2,7 +2,7 @@
 namespace Simply_Static;
 ?>
 
-<h1><?php _e( 'Simply Static &rsaquo; Generate', 'simply-static' ); ?></h1>
+<h1><?php _e( 'Simply Static S3 &rsaquo; Generate', 'simply-static' ); ?></h1>
 
 <div class='wrap' id='generatePage'>
 

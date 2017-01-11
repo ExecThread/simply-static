@@ -15,13 +15,13 @@ class Plugin {
 	 * Plugin version
 	 * @var string
 	 */
-	const VERSION = '1.8.1';
+	const VERSION = '2.0.0';
 
 	/**
 	 * The slug of the plugin; used in actions, filters, i18n, table names, etc.
 	 * @var string
 	 */
-	const SLUG = 'simply-static'; // keep it short; stick to alphas & dashes
+	const SLUG = 'simply-static-s3'; // keep it short; stick to alphas & dashes
 
 	// Base 64 encoded SVG image.
 	const ICON_SVG = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+PHN2ZyAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgICB4bWxuczpjYz0iaHR0cDovL2NyZWF0aXZlY29tbW9ucy5vcmcvbnMjIiAgIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyIgICB4bWxuczpzdmc9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiAgIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgICB4bWxuczpzb2RpcG9kaT0iaHR0cDovL3NvZGlwb2RpLnNvdXJjZWZvcmdlLm5ldC9EVEQvc29kaXBvZGktMC5kdGQiICAgeG1sbnM6aW5rc2NhcGU9Imh0dHA6Ly93d3cuaW5rc2NhcGUub3JnL25hbWVzcGFjZXMvaW5rc2NhcGUiICAgaWQ9InN2ZzM0MzQiICAgdmVyc2lvbj0iMS4xIiAgIGlua3NjYXBlOnZlcnNpb249IjAuOTEgcjEzNzI1IiAgIHdpZHRoPSIxODAiICAgaGVpZ2h0PSIzMDAiICAgdmlld0JveD0iMCAwIDE4MCAzMDAiICAgc29kaXBvZGk6ZG9jbmFtZT0iYm9sdC12ZWN0b3ItZ3JheS5zdmciPiAgPG1ldGFkYXRhICAgICBpZD0ibWV0YWRhdGEzNDQwIj4gICAgPHJkZjpSREY+ICAgICAgPGNjOldvcmsgICAgICAgICByZGY6YWJvdXQ9IiI+ICAgICAgICA8ZGM6Zm9ybWF0PmltYWdlL3N2Zyt4bWw8L2RjOmZvcm1hdD4gICAgICAgIDxkYzp0eXBlICAgICAgICAgICByZGY6cmVzb3VyY2U9Imh0dHA6Ly9wdXJsLm9yZy9kYy9kY21pdHlwZS9TdGlsbEltYWdlIiAvPiAgICAgICAgPGRjOnRpdGxlIC8+ICAgICAgPC9jYzpXb3JrPiAgICA8L3JkZjpSREY+ICA8L21ldGFkYXRhPiAgPGRlZnMgICAgIGlkPSJkZWZzMzQzOCIgLz4gIDxzb2RpcG9kaTpuYW1lZHZpZXcgICAgIHBhZ2Vjb2xvcj0iI2ZmZmZmZiIgICAgIGJvcmRlcmNvbG9yPSIjNjY2NjY2IiAgICAgYm9yZGVyb3BhY2l0eT0iMSIgICAgIG9iamVjdHRvbGVyYW5jZT0iMTAiICAgICBncmlkdG9sZXJhbmNlPSIxMCIgICAgIGd1aWRldG9sZXJhbmNlPSIxMCIgICAgIGlua3NjYXBlOnBhZ2VvcGFjaXR5PSIwIiAgICAgaW5rc2NhcGU6cGFnZXNoYWRvdz0iMiIgICAgIGlua3NjYXBlOndpbmRvdy13aWR0aD0iMTUzNiIgICAgIGlua3NjYXBlOndpbmRvdy1oZWlnaHQ9IjgwMSIgICAgIGlkPSJuYW1lZHZpZXczNDM2IiAgICAgc2hvd2dyaWQ9ImZhbHNlIiAgICAgZml0LW1hcmdpbi10b3A9IjAiICAgICBmaXQtbWFyZ2luLWxlZnQ9IjAiICAgICBmaXQtbWFyZ2luLXJpZ2h0PSIwIiAgICAgZml0LW1hcmdpbi1ib3R0b209IjAiICAgICBpbmtzY2FwZTp6b29tPSIyLjE0MjM3MjkiICAgICBpbmtzY2FwZTpjeD0iOC44Njg2Njc5IiAgICAgaW5rc2NhcGU6Y3k9IjE0Ny41MDAwMSIgICAgIGlua3NjYXBlOndpbmRvdy14PSItOCIgICAgIGlua3NjYXBlOndpbmRvdy15PSItOCIgICAgIGlua3NjYXBlOndpbmRvdy1tYXhpbWl6ZWQ9IjEiICAgICBpbmtzY2FwZTpjdXJyZW50LWxheWVyPSJzdmczNDM0IiAvPiAgPHBhdGggICAgIHN0eWxlPSJmaWxsOiM5Y2ExYTY7ZmlsbC1vcGFjaXR5OjEiICAgICBkPSJNIDM5LjksMjMzLjUgODQuNDMzMzMzLDE2MS4xMzMzMyAzOS45LDE2MS4xMzMzMyAxNDAuMSw2Ni41IGwgLTQ0LjUzMzMzMyw3Mi4zNjY2NyA0NC41MzMzMzMsMCB6IiAgICAgaWQ9InBhdGgzNDQ2IiAgICAgaW5rc2NhcGU6Y29ubmVjdG9yLWN1cnZhdHVyZT0iMCIgICAgIHNvZGlwb2RpOm5vZGV0eXBlcz0iY2NjY2NjYyIgLz48L3N2Zz4=';
@@ -131,7 +131,7 @@ class Plugin {
 					->set( 'destination_host', sist_origin_host() )
 					->set( 'temp_files_dir', trailingslashit( plugin_dir_path( dirname( __FILE__ ) ) . 'static-files' ) )
 					->set( 'additional_urls', '' )
-					->set( 'delivery_method', 'zip' )
+					->set( 'delivery_method', 's3' )
 					->set( 'local_dir', '' )
 					->set( 'delete_temp_files', '1' );
 			}
@@ -211,7 +211,8 @@ class Plugin {
 	 */
 	private function includes() {
 		require plugin_dir_path( dirname( __FILE__ ) ) . 'includes/shims.php';
-		require plugin_dir_path( dirname( __FILE__ ) ) . 'includes/libraries/phpuri.php';
+    require plugin_dir_path( dirname( __FILE__ ) ) . 'includes/libraries/phpuri.php';
+    require plugin_dir_path( dirname( __FILE__ ) ) . 'includes/libraries/S3.php';
 		require plugin_dir_path( dirname( __FILE__ ) ) . 'includes/libraries/PhpSimple/HtmlDomParser.php';
 		require plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-ss-options.php';
 		require plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-ss-view.php';
@@ -253,8 +254,8 @@ class Plugin {
 
 		// Add main menu item
 		add_menu_page(
-			__( 'Simply Static', self::SLUG ),
-			__( 'Simply Static', self::SLUG ),
+			__( 'Simply Static S3', self::SLUG ),
+			__( 'Simply Static S3', self::SLUG ),
 			'edit_posts',
 			self::SLUG,
 			array( self::$instance, 'display_generate_page' ),
@@ -272,7 +273,7 @@ class Plugin {
 
 		add_submenu_page(
 			self::SLUG,
-			__( 'Simply Static Settings', self::SLUG ),
+			__( 'Simply Static S3 Settings', self::SLUG ),
 			__( 'Settings', self::SLUG ),
 			'manage_options',
 			self::SLUG . '_settings',
@@ -425,7 +426,10 @@ class Plugin {
 			->assign( 'local_dir', $this->options->get( 'local_dir' ) )
 			->assign( 'delete_temp_files', $this->options->get( 'delete_temp_files' ) )
 			->assign( 'destination_url_type', $this->options->get( 'destination_url_type' ) )
-			->assign( 'relative_path', $this->options->get( 'relative_path' ) )
+      ->assign( 'relative_path', $this->options->get( 'relative_path' ) )
+      ->assign( 'aws_s3_bucket', $this->options->get( 'aws_s3_bucket' ) )
+			->assign( 'aws_access_key_id', $this->options->get( 'aws_access_key_id' ) )
+			->assign( 'aws_secret_access_key', $this->options->get( 'aws_secret_access_key' ) )
 			->render();
 	}
 
@@ -479,7 +483,10 @@ class Plugin {
 			->set( 'local_dir', sist_trailingslashit_unless_blank( $this->fetch_post_value( 'local_dir' ) ) )
 			->set( 'delete_temp_files', $this->fetch_post_value( 'delete_temp_files' ) )
 			->set( 'destination_url_type', $destination_url_type )
-			->set( 'relative_path', $relative_path )
+      ->set( 'relative_path', $relative_path )
+      ->set( 'aws_s3_bucket', filter_input( INPUT_POST, 'aws_s3_bucket' ) )
+			->set( 'aws_access_key_id', filter_input( INPUT_POST, 'aws_access_key_id' ) )
+			->set( 'aws_secret_access_key', filter_input( INPUT_POST, 'aws_secret_access_key' ) )
 			->save();
 	}
 

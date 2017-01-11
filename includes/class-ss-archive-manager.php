@@ -375,8 +375,25 @@ class Archive_Manager {
 
 				// return true when done (no more pages)
 				return $pages_processed == $total_pages;
-			}
-		}
+      }
+
+		} elseif ( $this->options->get( 'delivery_method' ) == 's3' ) {
+      $bucket = $this->options->get( 'aws_s3_bucket' );
+
+      $result = $archive_creator->publish_to_s3(
+        $bucket,
+        $this->options->get( 'aws_access_key_id' ),
+        $this->options->get( 'aws_secret_access_key' )
+      );
+
+      if ( is_wp_error( $result ) ) {
+        return $result;
+      } else {
+        $message = __( 'Site published to S3 bucket: ' . $bucket, 'simply-static' );
+        $this->save_status_message( $message );
+        return true;
+      }
+    }
 	}
 
 	/**
