@@ -253,6 +253,9 @@ class Archive_Creator {
         }
         try {
           $s3->putObject( \S3::inputFile( $item->getRealPath() ), $bucket, $path, \S3::ACL_PUBLIC_READ );
+          if(strpos($item->getRealPath(), 'serviceworker.js') !== false) {
+            $s3->putObject( \S3::inputFile( $item->getRealPath() ), $bucket, 'serviceworker.js', \S3::ACL_PUBLIC_READ );
+          }
         } catch (any $err) {
           return new WP_Error( 'cannot_publish_to_s3', sprintf( __( "Could not publish file to S3: %s: %s", $this->slug, $err ), $path ) );
         }
